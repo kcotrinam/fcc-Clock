@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Timer from './Timer';
 import MainTitle from './MainTitle';
-import ControlSession from './controlers/ControlSession';
-import ControlBreak from './controlers/ControlBreak';
+import Control from './controlers/Control';
+import Title from './Title';
 
 const App = () => {
 	const counter = useSelector((state) => state.sessionReducer);
@@ -13,10 +13,19 @@ const App = () => {
 		<div>
 			<MainTitle text='25 + 5 Clock' />
 			<div>
-				<ControlSession counter={counter} />
-				<ControlBreak counter={breakCounter} />
+				<div>
+					<Title title='Session Length' />
+					<Control counter={counter} controllerType='session' />
+				</div>
+				<div>
+					<Title title='Break Length' />
+					<Control counter={breakCounter} controllerType='break' />
+				</div>
 			</div>
-			<Timer currentTime={counter} />
+			<div>
+				<Title title='Session' />
+				<Timer currentTime={counter} />
+			</div>
 		</div>
 	);
 };
