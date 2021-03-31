@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
+
 const Control = ({ counter, controllerType }) => {
 	const dispatch = useDispatch();
+
 	const controller = controllerType === 'session';
+
 	return (
 		<>
-			<h3>{counter}</h3>
 			<button
 				onClick={() =>
 					dispatch(
@@ -15,6 +17,7 @@ const Control = ({ counter, controllerType }) => {
 				}>
 				Increment
 			</button>
+			<span>{counter}</span>
 			<button
 				onClick={() =>
 					dispatch(

@@ -6,8 +6,8 @@ import Control from './controlers/Control';
 import Title from './Title';
 
 const App = () => {
-	const counter = useSelector((state) => state.sessionReducer);
-	const breakCounter = useSelector((state) => state.breakReducer);
+	const counter = useSelector((state) => state.timeReducer.session);
+	const breakCounter = useSelector((state) => state.timeReducer.break);
 
 	return (
 		<div>

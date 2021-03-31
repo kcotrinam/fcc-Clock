@@ -1,10 +1,8 @@
-import breakReducer from './break';
-import sessionReducer from './session';
+import timeReducer from './time';
 import { combineReducers } from 'redux';
 
 const allReducers = combineReducers({
-	breakReducer,
-	sessionReducer,
+	timeReducer,
 });
 
 export default allReducers;
