@@ -1,11 +1,23 @@
-export const increment = () => {
+export const incrementSession = () => {
 	return {
-		type: 'INCREMENT',
+		type: 'INCREMENT_SESSION',
 	};
 };
 
-export const decrement = () => {
+export const decrementSession = () => {
 	return {
-		type: 'DECREMENT',
+		type: 'DECREMENT_SESSION',
+	};
+};
+
+export const incrementBreak = () => {
+	return {
+		type: 'INCREMENT_BREAK',
+	};
+};
+
+export const decrementBreak = () => {
+	return {
+		type: 'DECREMENT_BREAK',
 	};
 };
