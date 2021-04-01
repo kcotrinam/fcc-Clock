@@ -10,12 +10,15 @@ const Timer = ({ currentTime }) => {
 		const min = currentTime % 60;
 		const seconds = '00';
 
-		setTimer({
-			minutes: `${min}`,
-			seconds: `${seconds}`,
-		});
+		changeTimer(min, seconds);
 	}, [currentTime]);
 
+	const changeTimer = (min, sec) => {
+		setTimer({
+			minutes: `${min}`,
+			seconds: `${sec}`,
+		});
+	};
 	return (
 		<div className='timer'>
 			<h2>
