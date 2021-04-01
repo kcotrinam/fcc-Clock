@@ -3,36 +3,41 @@ import { useSelector } from 'react-redux';
 
 const Timer = () => {
 	const sessionTime = useSelector((state) => state.timeReducer.session);
-	const [timer, setTimer] = useState(sessionTime);
+	const [timer, setTimer] = useState({
+		minutes: sessionTime,
+		seconds: 0,
+		isPlaying: false,
+	});
 	useEffect(() => {
-		setTimer(sessionTime);
+		if (!timer.isPlaying) {
+			setTimer({ minutes: sessionTime, seconds: 0 });
+		}
 	}, [sessionTime]);
 
 	useEffect(() => {
 		const btn = document.querySelector('.play');
-		btn.addEventListener('click', (e) => {
-			console.log(e.target);
+
+		btn.addEventListener('click', () => {
 			startCountDown();
 		});
 
 		const startCountDown = () => {
 			setInterval(() => {
-				setTimer((prev) => prev - 1);
+				setTimer((prevState) => ({
+					...prevState,
+					seconds: prevState.seconds < 1 ? 59 : prevState.seconds - 1,
+					minutes:
+						prevState.seconds < 1 ? prevState.minutes - 1 : prevState.minutes,
+					isPlaying: true,
+				}));
 			}, 1000);
 		};
 	}, []);
 
-	const changeTimer = (min, sec) => {
-		setTimer({
-			minutes: `${min}`,
-			seconds: `${sec}`,
-		});
-	};
-
 	return (
 		<div className='timer'>
 			<h2>
-				{timer} : {timer.seconds}
+				{timer.minutes} : {timer.seconds}
 			</h2>
 		</div>
 	);
