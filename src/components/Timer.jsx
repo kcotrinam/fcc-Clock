@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const Timer = ({ currentTime }) => {
-	const [timer, setTimer] = useState({
-		minutes: '0',
-		seconds: '00',
-	});
+const Timer = () => {
+	const sessionTime = useSelector((state) => state.timeReducer.session);
+	const [timer, setTimer] = useState(sessionTime);
+	useEffect(() => {
+		setTimer(sessionTime);
+	}, [sessionTime]);
 
 	useEffect(() => {
-		const min = currentTime % 60;
-		const seconds = '00';
+		const btn = document.querySelector('.play');
+		btn.addEventListener('click', (e) => {
+			console.log(e.target);
+			startCountDown();
+		});
 
-		changeTimer(min, seconds);
-	}, [currentTime]);
+		const startCountDown = () => {
+			setInterval(() => {
+				setTimer((prev) => prev - 1);
+			}, 1000);
+		};
+	}, []);
 
 	const changeTimer = (min, sec) => {
 		setTimer({
@@ -19,10 +28,11 @@ const Timer = ({ currentTime }) => {
 			seconds: `${sec}`,
 		});
 	};
+
 	return (
 		<div className='timer'>
 			<h2>
-				{timer.minutes} : {timer.seconds}
+				{timer} : {timer.seconds}
 			</h2>
 		</div>
 	);
