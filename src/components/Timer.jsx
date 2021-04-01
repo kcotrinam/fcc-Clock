@@ -1,55 +1,50 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 const Timer = () => {
 	const sessionTime = useSelector((state) => state.timeReducer.session);
-	const [timer, setTimer] = useState({
-		minutes: sessionTime,
-		seconds: 0,
-		isPlaying: false,
-	});
+	const [timer, setTimer] = useState(0);
+	const [isActive, setIsActive] = useState(false);
+	const countRef = useRef(null);
+
 	useEffect(() => {
-		if (!timer.isPlaying) {
-			setTimer({ minutes: sessionTime, seconds: 0, isPlaying: false });
-		}
+		setTimer(sessionTime * 60);
 	}, [sessionTime]);
 
-	useEffect(() => {
-		const btn = document.querySelector('.play');
-
-		btn.addEventListener('click', () => {
-			startCountDown();
-		});
-
-		const startCountDown = () => {
-			setInterval(() => {
-				setTimer((prevState) => ({
-					...prevState,
-					seconds: prevState.seconds < 1 ? 59 : prevState.seconds - 1,
-					minutes:
-						prevState.seconds < 1 ? prevState.minutes - 1 : prevState.minutes,
-					isPlaying: true,
-				}));
+	const handleStart = () => {
+		if (isActive) {
+			clearInterval(countRef.current);
+			setIsActive(false);
+		} else if (timer > 1) {
+			setIsActive(true);
+			countRef.current = setInterval(() => {
+				setTimer((timer) => timer - 1);
 			}, 1000);
-		};
-	}, []);
+		}
+	};
 
-	const changeStatus = () => {
-		setTimer((prevState) => ({
-			...timer,
-			isPlaying: !prevState.isPlaying,
-		}));
+	useEffect(() => {
+		if (timer < 1) {
+			clearInterval(countRef.current);
+			setIsActive(false);
+		}
+	}, [timer]);
+
+	const formatTime = () => {
+		const getSeconds = `0${timer % 60}`.slice(-2);
+		const minutes = `${Math.floor(timer / 60)}`;
+		const getMinutes = `0${minutes % 60}`.slice(-2);
+
+		return `${getMinutes} : ${getSeconds}`;
 	};
 
 	return (
 		<div className='timer'>
-			<h2>
-				{timer.minutes} : {timer.seconds}
-			</h2>
-			<button className='play1' onClick={changeStatus}>
-				{timer.isPlaying ? 'Pause' : 'Play1'}
+			<h2>{formatTime()}</h2>
+			<button className='play' onClick={handleStart}>
+				{isActive ? 'Pause' : 'Play'}
 			</button>
-			{/* {console.log(timer)} */}
+			{console.log(countRef.current)}
 		</div>
 	);
 };

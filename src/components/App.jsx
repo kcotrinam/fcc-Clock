@@ -26,7 +26,6 @@ const App = () => {
 				<Title title='Session' />
 				<Timer currentTime={counter} />
 			</div>
-			<button className='play'>play</button>
 		</div>
 	);
 };
