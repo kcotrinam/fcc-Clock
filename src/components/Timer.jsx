@@ -10,7 +10,7 @@ const Timer = () => {
 	});
 	useEffect(() => {
 		if (!timer.isPlaying) {
-			setTimer({ minutes: sessionTime, seconds: 0 });
+			setTimer({ minutes: sessionTime, seconds: 0, isPlaying: false });
 		}
 	}, [sessionTime]);
 
@@ -34,11 +34,22 @@ const Timer = () => {
 		};
 	}, []);
 
+	const changeStatus = () => {
+		setTimer((prevState) => ({
+			...timer,
+			isPlaying: !prevState.isPlaying,
+		}));
+	};
+
 	return (
 		<div className='timer'>
 			<h2>
 				{timer.minutes} : {timer.seconds}
 			</h2>
+			<button className='play1' onClick={changeStatus}>
+				{timer.isPlaying ? 'Pause' : 'Play1'}
+			</button>
+			{/* {console.log(timer)} */}
 		</div>
 	);
 };
