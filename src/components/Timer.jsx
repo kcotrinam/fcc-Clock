@@ -37,6 +37,7 @@ const Timer = () => {
 			audio.play();
 			clearInterval(countRef.current);
 			setIsActive(false);
+			countLoopRef.current = false;
 		}
 	}, [timer]);
 
@@ -48,12 +49,20 @@ const Timer = () => {
 		return `${getMinutes} : ${getSeconds}`;
 	};
 
+	const handleReset = () => {
+		clearInterval(countRef.current);
+		setIsActive(false);
+		countLoopRef.current = false;
+		setTimer(sessionTime * 60);
+	};
+
 	return (
 		<div className='timer'>
 			<h2>{formatTime()}</h2>
 			<button className='play' onClick={handleStart}>
 				{isActive ? 'Pause' : 'Play'}
 			</button>
+			<button onClick={handleReset}>Reset</button>
 		</div>
 	);
 };
