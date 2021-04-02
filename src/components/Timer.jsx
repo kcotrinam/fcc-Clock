@@ -3,12 +3,15 @@ import { useSelector } from 'react-redux';
 
 const Timer = () => {
 	const sessionTime = useSelector((state) => state.timeReducer.session);
+	const breakCounter = useSelector((state) => state.timeReducer.break);
 	const [timer, setTimer] = useState(sessionTime * 60);
 	const [isActive, setIsActive] = useState(false);
 	const countRef = useRef(null);
+	const countLoopRef = useRef(false);
 
 	useEffect(() => {
 		if (!isActive) setTimer(sessionTime * 60);
+		else if (isActive && timer < 1);
 	}, [sessionTime]);
 
 	const handleStart = () => {
@@ -26,10 +29,14 @@ const Timer = () => {
 	useEffect(() => {
 		const audio = document.querySelector('#beep');
 
-		if (timer < 1) {
+		if (timer < 1 && !countLoopRef.current) {
+			audio.play();
+			setTimer(breakCounter * 60);
+			countLoopRef.current = true;
+		} else if (timer < 1 && countLoopRef.current) {
+			audio.play();
 			clearInterval(countRef.current);
 			setIsActive(false);
-			audio.play();
 		}
 	}, [timer]);
 
