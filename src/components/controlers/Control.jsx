@@ -18,7 +18,7 @@ const Control = ({ counter, controllerType }) => {
 				}>
 				Increment
 			</button>
-			<span>{counter}</span>
+			<span id={controller ? 'session-length' : 'break-length'}>{counter}</span>
 			<button
 				id={controller ? 'session-decrement' : 'break-decrement'}
 				onClick={() =>

@@ -6,7 +6,6 @@ const INITIAL_STATE = {
 const timeReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case 'INCREMENT_SESSION':
-			// console.log({state.session});
 			return {
 				...state,
 				session: state.session + 1,
@@ -25,6 +24,11 @@ const timeReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				break: state.break - 1,
+			};
+		case 'RESET_COUNTERS':
+			return {
+				session: 25,
+				break: 5,
 			};
 		default:
 			return state;

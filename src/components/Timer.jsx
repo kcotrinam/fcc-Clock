@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { incrementSession } from '../actions';
 
 const Timer = () => {
 	const sessionTime = useSelector((state) => state.timeReducer.session);
 	const breakCounter = useSelector((state) => state.timeReducer.break);
+	const dispatch = useDispatch();
 	const [timer, setTimer] = useState(sessionTime * 60);
 	const [isActive, setIsActive] = useState(false);
 	const countRef = useRef(null);
@@ -53,16 +55,18 @@ const Timer = () => {
 		clearInterval(countRef.current);
 		setIsActive(false);
 		countLoopRef.current = false;
-		setTimer(sessionTime * 60);
+		dispatch({ type: 'RESET_COUNTERS' });
 	};
 
 	return (
-		<div className='timer'>
-			<h2>{formatTime()}</h2>
-			<button className='play' onClick={handleStart}>
+		<div id='timer-label' className='timer'>
+			<h2 id='time-left'>{formatTime()}</h2>
+			<button id='start_stop' className='play' onClick={handleStart}>
 				{isActive ? 'Pause' : 'Play'}
 			</button>
-			<button onClick={handleReset}>Reset</button>
+			<button id='reset' onClick={handleReset}>
+				Reset
+			</button>
 		</div>
 	);
 };
