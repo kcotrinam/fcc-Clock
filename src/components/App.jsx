@@ -15,11 +15,11 @@ const App = () => {
 			<MainTitle text='25 + 5 Clock' />
 			<div>
 				<div>
-					<Title title='Session Length' />
+					<Title title='Session Length' id='session-label' />
 					<Control counter={counter} controllerType='session' />
 				</div>
 				<div>
-					<Title title='Break Length' />
+					<Title title='Break Length' id='break-label' />
 					<Control counter={breakCounter} controllerType='break' />
 				</div>
 			</div>

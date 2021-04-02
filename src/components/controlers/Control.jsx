@@ -8,6 +8,7 @@ const Control = ({ counter, controllerType }) => {
 	return (
 		<>
 			<button
+				id={controller ? 'session-increment' : 'break-increment'}
 				onClick={() =>
 					dispatch(
 						controller
@@ -19,6 +20,7 @@ const Control = ({ counter, controllerType }) => {
 			</button>
 			<span>{counter}</span>
 			<button
+				id={controller ? 'session-decrement' : 'break-decrement'}
 				onClick={() =>
 					dispatch(
 						controller
