@@ -7,7 +7,7 @@ const Control = ({ counter, controllerType }) => {
 	const controller = controllerType === 'session';
 
 	return (
-		<>
+		<div>
 			<button
 				id={controller ? 'session-increment' : 'break-increment'}
 				onClick={() =>
@@ -31,7 +31,7 @@ const Control = ({ counter, controllerType }) => {
 				}>
 				<BsChevronDown />
 			</button>
-		</>
+		</div>
 	);
 };
 

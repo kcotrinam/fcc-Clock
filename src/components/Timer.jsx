@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementSession } from '../actions';
 import { GrPlayFill, GrPauseFill } from 'react-icons/gr';
 import { BiReset } from 'react-icons/bi';
 
@@ -67,12 +66,14 @@ const Timer = () => {
 	return (
 		<div id='timer-label' className='timer'>
 			<h2 id='time-left'>{formatTime()}</h2>
-			<button id='start_stop' className='play' onClick={handleStart}>
-				{isActive ? <GrPauseFill /> : <GrPlayFill />}
-			</button>
-			<button id='reset' onClick={handleReset}>
-				<BiReset />
-			</button>
+			<div className='session-controller'>
+				<button id='start_stop' className='play' onClick={handleStart}>
+					{isActive ? <GrPauseFill /> : <GrPlayFill />}
+				</button>
+				<button id='reset' onClick={handleReset}>
+					<BiReset />
+				</button>
+			</div>
 		</div>
 	);
 };

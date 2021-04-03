@@ -1,0 +1,15 @@
+.controllers {
+	display: flex;
+	justify-content: space-between;
+
+	&__session > div,
+	&__break > div {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+#session-length,
+#break-length {
+	font-size: var(--font-size-normal);
+}
