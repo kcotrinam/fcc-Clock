@@ -5,6 +5,7 @@ import MainTitle from './MainTitle';
 import Control from './controlers/Control';
 import Title from './Title';
 import Audio from './Audio';
+import { BsChevronUp } from 'react-icons/bs';
 
 const App = () => {
 	const counter = useSelector((state) => state.timeReducer.session);
@@ -31,6 +32,7 @@ const App = () => {
 				id='beep'
 				audio='https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'
 			/>
+			<div></div>
 		</div>
 	);
 };

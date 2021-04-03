@@ -1,3 +1,4 @@
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 
 const Control = ({ counter, controllerType }) => {
@@ -16,7 +17,7 @@ const Control = ({ counter, controllerType }) => {
 							: { type: 'INCREMENT_BREAK' }
 					)
 				}>
-				Increment
+				<BsChevronUp />
 			</button>
 			<span id={controller ? 'session-length' : 'break-length'}>{counter}</span>
 			<button
@@ -28,7 +29,7 @@ const Control = ({ counter, controllerType }) => {
 							: { type: 'DECREMENT_BREAK' }
 					)
 				}>
-				Decrement
+				<BsChevronDown />
 			</button>
 		</>
 	);
