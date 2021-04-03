@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/fcc-Clock/static/css/main.4e3af881.chunk.css",
+    "main.js": "/fcc-Clock/static/js/main.e7cd6990.chunk.js",
+    "main.js.map": "/fcc-Clock/static/js/main.e7cd6990.chunk.js.map",
+    "runtime-main.js": "/fcc-Clock/static/js/runtime-main.95372c5a.js",
+    "runtime-main.js.map": "/fcc-Clock/static/js/runtime-main.95372c5a.js.map",
+    "static/js/2.969aaaa1.chunk.js": "/fcc-Clock/static/js/2.969aaaa1.chunk.js",
+    "static/js/2.969aaaa1.chunk.js.map": "/fcc-Clock/static/js/2.969aaaa1.chunk.js.map",
+    "index.html": "/fcc-Clock/index.html",
+    "static/css/main.4e3af881.chunk.css.map": "/fcc-Clock/static/css/main.4e3af881.chunk.css.map",
+    "static/js/2.969aaaa1.chunk.js.LICENSE.txt": "/fcc-Clock/static/js/2.969aaaa1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.95372c5a.js",
+    "static/js/2.969aaaa1.chunk.js",
+    "static/css/main.4e3af881.chunk.css",
+    "static/js/main.e7cd6990.chunk.js"
+  ]
+}
