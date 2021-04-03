@@ -45,17 +45,17 @@ const Timer = () => {
 
 	const formatTime = () => {
 		const getSeconds = `0${timer % 60}`.slice(-2);
-		const minutes = `${Math.floor(timer / 60)}`;
-		const getMinutes = `0${minutes % 60}`.slice(-2);
+		const minutes = `0${Math.floor(timer / 60)}`.slice(-2);
 
-		return `${getMinutes} : ${getSeconds}`;
+		return `${minutes}:${getSeconds}`;
 	};
 
 	const handleReset = () => {
+		dispatch({ type: 'RESET_COUNTERS' });
 		clearInterval(countRef.current);
 		setIsActive(false);
 		countLoopRef.current = false;
-		dispatch({ type: 'RESET_COUNTERS' });
+		setTimer(sessionTime * 60);
 	};
 
 	return (

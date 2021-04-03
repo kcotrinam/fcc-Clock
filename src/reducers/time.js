@@ -8,22 +8,22 @@ const timeReducer = (state = INITIAL_STATE, action) => {
 		case 'INCREMENT_SESSION':
 			return {
 				...state,
-				session: state.session + 1,
+				session: state.session < 60 ? state.session + 1 : state.session,
 			};
 		case 'DECREMENT_SESSION':
 			return {
 				...state,
-				session: state.session - 1,
+				session: state.session <= 1 ? state.session : state.session - 1,
 			};
 		case 'INCREMENT_BREAK':
 			return {
 				...state,
-				break: state.break + 1,
+				break: state.break > 59 ? state.break : state.break + 1,
 			};
 		case 'DECREMENT_BREAK':
 			return {
 				...state,
-				break: state.break - 1,
+				break: state.break <= 1 ? state.break : state.break - 1,
 			};
 		case 'RESET_COUNTERS':
 			return {
