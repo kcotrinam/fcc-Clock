@@ -56,6 +56,10 @@ const Timer = () => {
 		setIsActive(false);
 		countLoopRef.current = false;
 		setTimer(sessionTime * 60);
+
+		const audio = document.querySelector('#beep');
+		audio.pause();
+		audio.currentTime = 0;
 	};
 
 	return (
