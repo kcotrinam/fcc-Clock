@@ -37,8 +37,8 @@ const Timer = () => {
 			countLoopRef.current = true;
 		} else if (timer < 1 && countLoopRef.current) {
 			audio.play();
-			clearInterval(countRef.current);
 			setIsActive(false);
+			setTimer(sessionTime * 60);
 			countLoopRef.current = false;
 		}
 	}, [timer]);
