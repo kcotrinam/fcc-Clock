@@ -1,9 +1,11 @@
 #main-title {
 	font-size: var(--title-size);
 	font-weight: bold;
+	color: var(--text-light-color);
 }
 
 #session-label,
 #break-label {
 	font-size: var(--subtitle-size);
+	color: var(--text-light-color);
 }

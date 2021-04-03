@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GrPlayFill, GrPauseFill } from 'react-icons/gr';
+import { GrPauseFill } from 'react-icons/gr';
 import { BiReset } from 'react-icons/bi';
+import { BsPlayFill } from 'react-icons/bs';
 
 const Timer = () => {
 	const sessionTime = useSelector((state) => state.timeReducer.session);
@@ -68,7 +69,7 @@ const Timer = () => {
 			<h2 id='time-left'>{formatTime()}</h2>
 			<div className='session-controller'>
 				<button id='start_stop' className='play' onClick={handleStart}>
-					{isActive ? <GrPauseFill /> : <GrPlayFill />}
+					{isActive ? <GrPauseFill /> : <BsPlayFill />}
 				</button>
 				<button id='reset' onClick={handleReset}>
 					<BiReset />

@@ -1,6 +1,7 @@
 .controllers {
 	display: flex;
 	justify-content: space-between;
+	color: var(--text-light-color);
 
 	&__session > div,
 	&__break > div {
@@ -12,4 +13,9 @@
 #session-length,
 #break-length {
 	font-size: var(--font-size-normal);
+	color: var(--text-light-color);
+}
+
+svg {
+	color: var(--text-light-color) !important;
 }
